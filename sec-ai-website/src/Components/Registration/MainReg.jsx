@@ -61,7 +61,7 @@ function MainReg() {
           <FirstStep num={1} />
           <div className="flex justify-start grow shrink min-w-[400px] pl-20  py-10">
             <FormBox
-              title="Enter Name"
+              title="Your Name"
               type="email"
               back={false}
               index={-1}
@@ -88,6 +88,7 @@ function MainReg() {
                   index={index}
                   nextButton={next}
                   backButton={back}
+                  last={index == refList.length - 2 ? true : false}
                 />
               </div>
             </div>

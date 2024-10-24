@@ -54,7 +54,9 @@ function FormBox(props) {
             props.nextButton(props.index);
           }}
         >
-          <p className="font-fira-code text-2xl">Next</p>
+          <p className="font-fira-code text-2xl">
+            {props.last ? "Submit " : "Next"}
+          </p>
           <img src={arrow_back} alt="next" />
         </button>
         {props.back && (

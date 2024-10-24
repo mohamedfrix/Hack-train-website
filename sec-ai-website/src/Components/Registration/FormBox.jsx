@@ -48,12 +48,22 @@ function FormBox(props) {
         />
       </div>
       <div className="flex flex-row-reverse justify-between ">
-        <button className="flex flex-r justify-around items-center h-14 w-44 rounded-[20px]  bg-mainLighter pl-3 gap- ">
+        <button
+          className="flex flex-r justify-around items-center h-14 w-44 rounded-[20px]  bg-mainLighter pl-3 gap- "
+          onClick={() => {
+            props.nextButton(props.index);
+          }}
+        >
           <p className="font-fira-code text-2xl">Next</p>
           <img src={arrow_back} alt="next" />
         </button>
         {props.back && (
-          <button className="flex justify-start items-center h-14 w-44 rounded-[20px]  bg-mainLighter pl-3 gap-10">
+          <button
+            className="flex justify-start items-center h-14 w-44 rounded-[20px]  bg-mainLighter pl-3 gap-10"
+            onClick={() => {
+              props.backButton(props.index);
+            }}
+          >
             <img src={arrow_next} alt="next" />
             <p className="font-fira-code text-2xl">Back</p>
           </button>

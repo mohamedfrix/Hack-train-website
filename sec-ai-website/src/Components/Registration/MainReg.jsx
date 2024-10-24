@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import RegNavBar from "./RegNavBar";
 import FormBox from "./FormBox";
 import FirstStep from "./FirstStep";
@@ -7,12 +7,6 @@ import background_image from "../../assets/backgrounds/background.jpg";
 
 function MainReg() {
   const input_fields = [
-    {
-      first: true,
-      title: "Your Name",
-      type: "name",
-      back: false,
-    },
     {
       first: false,
       title: "Your Email",
@@ -33,35 +27,68 @@ function MainReg() {
     },
   ];
 
-  const list_of_input = () => {
-    input_fields.map((item) => {
-      return (
-        <>
-          <div className="flex h-full px-5">
-            {item.first ? <FirstStep /> : <OtherSteps />}
-            <div className="flex justify-start grow shrink min-w-[400px] pl-20 py-10">
-              <FormBox title={item.title} type={item.type} back={item.back} />
-            </div>
-          </div>
-        </>
-      );
-    });
-  };
+  const refList = input_fields.map(() => {
+    return useRef(null);
+  });
+  refList.push(useRef(null)); // for the first form element
+
+  function next(index) {
+    const element = refList[index + 1].current;
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+
+  function back(index) {
+    if (index - 1 == -1) {
+      var element = refList[refList.length - 1].current;
+    } else {
+      var element = refList[index - 1].current;
+    }
+    element.scrollIntoView({ behavior: "smooth" });
+  }
 
   return (
     <div
-      className="flex flex-col h-screen w-screen
+      className="h-screen w-screen overflow-hidden
                     bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${background_image})` }}
     >
-      <RegNavBar />
-      <div className="flex flex-col">
-        {input_fields.map((item) => {
+      <div
+        className="flex flex-col h-screen "
+        ref={refList[refList.length - 1]}
+      >
+        <RegNavBar />
+        <div className="flex flex-row grow ">
+          <FirstStep num={1} />
+          <div className="flex justify-start grow shrink min-w-[400px] pl-20  py-10">
+            <FormBox
+              title="Enter Name"
+              type="email"
+              back={false}
+              index={-1}
+              nextButton={next}
+            />
+          </div>
+        </div>
+      </div>
+      <div className="">
+        {input_fields.map((item, index) => {
           return (
-            <div className="flex px-5  ">
-              {item.first ? <FirstStep /> : <OtherSteps />}
-              <div className="flex justify-start grow shrink min-w-[400px] pl-20 py-10">
-                <FormBox title={item.title} type={item.type} back={item.back} />
+            <div
+              className="flex flex-row grow h-screen bg-black
+              bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${background_image})` }}
+              ref={refList[index]}
+            >
+              <OtherSteps num={index + 2} />
+              <div className="flex justify-start grow shrink min-w-[400ox] pl-20 py-24">
+                <FormBox
+                  title={item.title}
+                  type={item.type}
+                  back={item.back}
+                  index={index}
+                  nextButton={next}
+                  backButton={back}
+                />
               </div>
             </div>
           );

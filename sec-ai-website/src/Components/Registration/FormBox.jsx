@@ -61,7 +61,7 @@ function FormBox(props) {
         </button>
         {props.back && (
           <button
-            className="flex justify-start items-center h-14 w-44 rounded-[20px]  bg-mainLighter pl-3 gap-10 custome-shadow"
+            className="flex justify-start items-center h-14 w-44 rounded-[20px]  bg-transparent border-mainLighter border-2 pl-3 gap-10 custome-shadow"
             onClick={() => {
               props.backButton(props.index);
             }}

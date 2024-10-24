@@ -59,7 +59,8 @@ function MainReg() {
         <RegNavBar />
         <div className="flex flex-row grow ">
           <FirstStep num={1} />
-          <div className="flex justify-start grow shrink min-w-[400px] pl-20  py-10">
+          <div className="flex md:justify-start grow shrink min-w-[400px] md:pl-20  py-10
+                          justify-center w-full px-11">
             <FormBox
               title="Your Name"
               type="email"
@@ -75,12 +76,13 @@ function MainReg() {
           return (
             <div
               className="flex flex-row grow h-screen bg-black
-              bg-cover bg-center bg-no-repeat"
+                          bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${background_image})` }}
               ref={refList[index]}
             >
               <OtherSteps num={index + 2} />
-              <div className="flex justify-start grow shrink min-w-[400ox] pl-20 py-24">
+              <div className="flex md:justify-start grow shrink md:min-w-[400px] md:pl-20 py-24
+                               justify-center w-full px-11">
                 <FormBox
                   title={item.title}
                   type={item.type}

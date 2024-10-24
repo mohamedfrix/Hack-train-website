@@ -49,7 +49,7 @@ function FormBox(props) {
       </div>
       <div className="flex flex-row-reverse justify-between ">
         <button
-          className="flex flex-r justify-around items-center h-14 w-44 rounded-[20px]  bg-mainLighter pl-3 gap- "
+          className="flex flex-r justify-around items-center h-14 w-44 rounded-[20px]  bg-mainLighter pl-3 custome-shadow "
           onClick={() => {
             props.nextButton(props.index);
           }}
@@ -61,7 +61,7 @@ function FormBox(props) {
         </button>
         {props.back && (
           <button
-            className="flex justify-start items-center h-14 w-44 rounded-[20px]  bg-mainLighter pl-3 gap-10"
+            className="flex justify-start items-center h-14 w-44 rounded-[20px]  bg-mainLighter pl-3 gap-10 custome-shadow"
             onClick={() => {
               props.backButton(props.index);
             }}

@@ -2,10 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
-  font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 
   color: white;
+}
 
+.custome-shadow {
+  -webkit-box-shadow: -2px 3px 45px -20px rgba(255, 255, 255, 1);
+  -moz-box-shadow: -2px 3px 45px -20px rgba(255, 255, 255, 1);
+  box-shadow: -2px 3px 45px -20px rgba(255, 255, 255, 1);
 }

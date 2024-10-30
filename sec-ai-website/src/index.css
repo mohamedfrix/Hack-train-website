@@ -2,10 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
-  font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 
   color: white;
+}
+body{
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
+.custom-border {
+  clip-path: polygon(23% 0, 70% 0%, 100% 0, 100% 71%, 74% 100%, 30% 100%, 0 100%, 0 27%);
 }

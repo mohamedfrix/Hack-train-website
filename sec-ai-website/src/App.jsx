@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Views/Home';
 import Registration from './Views/Registration';
 import LeaderBoard from './Views/LeaderBoard';
+import SubmissionDone from './Components/submissionDone/SubmissionDone';
 
 
 
@@ -15,6 +16,7 @@ function App() {
         <Route  path="/" element={<Home />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/contact" element={<LeaderBoard />} />
+        <Route path="/submission_done" element={<SubmissionDone />} />
       </Routes>
     </Router>
     </div>

@@ -5,8 +5,12 @@ import club_logo from "../../assets/logo.svg";
 function RegNavBar() {
   return (
     <div className="flex justify-between p-8 ">
-      <img className=" h-20" src={club_logo} alt="secai logo" />
-      <img className="w-16" src={event_logo} alt="event logo" />
+      <a href="/">
+        <img className=" h-20" src={club_logo} alt="secai logo" />
+      </a>
+      <a href="/">
+        <img className="w-16" src={event_logo} alt="event logo" />
+      </a>
     </div>
   );
 }

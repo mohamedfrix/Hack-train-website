@@ -2,10 +2,7 @@
 
 
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {
@@ -20,9 +17,10 @@ export default {
         violetLight: '#6D4CAE',
         mainLighter: '#1673FF', 
         dark : '#161616',
-        borderMain : '#787575'
+        borderMain : '#787575',
+        violetMedium: "#9747FF",
       },
     },
   },
   plugins: [],
-}
+};

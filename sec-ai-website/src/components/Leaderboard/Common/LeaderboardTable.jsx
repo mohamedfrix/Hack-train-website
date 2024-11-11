@@ -2,7 +2,7 @@ function LeaderboardTable({data}){
     //TODO : figure out how to make this table not exceed screen height in a better way
     return (
       <div className="w-5/6 md:w-5/6 flex max-h-[65vh] md:max-h-[55vh] justify-center mt-10 font-fira-code text-sm md:text-lg">
-      <div className=" overflow-scroll  scrollbar-hidden  w-full  border rounded-t-xl  border-white ">
+      <div className=" overflow-scroll lg:overflow-x-hidden   w-full  border rounded-t-xl  border-white ">
         <table className=" min-w-full   bg-black bg-opacity-40  shadow-dark ">
           <thead>
             <tr>

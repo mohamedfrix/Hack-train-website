@@ -3,7 +3,9 @@ import secaiLogo from "../../assets/Home/secai_white_without_text.svg";
 import eventLogo from "../../assets/Home/event_logo_white.svg";
 export default function Footer() {
   return (
-    <div className=" bg-gradient-to-t from-mainLighter to-transparent pt-6">
+    <div className=" bg-gradient-to-t from-mainLighter to-transparent pt-6"
+    id="contact"
+    >
       <h1 className="text-center text-xl sm:text-2x md:text-3xl">Contact Us</h1>
       <h4 className="text-center text-md sm:text-lg md:text-xl pt-9">
         Follow us for new updates and colabs{" "}

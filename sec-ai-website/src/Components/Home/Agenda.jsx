@@ -46,7 +46,8 @@ export default function Agenda() {
   };
 
   return (
-    <div className="p-8 w-full flex justify-center flex-col pr-12 relative min-h-full py-32" id="agenda">
+    <div className="p-8 w-full flex justify-center flex-col relative min-h-full py-32 overflow-x-hidden"
+     id="agenda">
       <h2 className="text-2xl font-bold mb-4 text-center">Event Agenda</h2>
       <div className="w-full max-w-xl relative mx-auto">
         <img
@@ -63,9 +64,9 @@ export default function Agenda() {
             }}
           ></div>
 
-          <div className="flex justify-center my-6 z-20">
+          <div className="flex justify-center my-6 z-20 max-w-lg">
             <button
-              className={`px-4 py-2 mx-2 rounded-3xl border-violetMedium border min-w-24 ${
+              className={`px-4 py-2 mx-2 rounded-3xl border-violetMedium border text-sm sm:text-lg ${
                 selectedDay === "day1"
                   ? "bg-gradient-to-r from-dark to-[#7002DD] "
                   : ""
@@ -75,7 +76,7 @@ export default function Agenda() {
               Day 1
             </button>
             <button
-              className={`px-4 py-2 mx-2 rounded-3xl border-violetMedium border min-w-24 ${
+              className={`px-4 py-2 mx-2 rounded-3xl border-violetMedium border text-sm sm:text-lg ${
                 selectedDay === "day2"
                   ? "bg-gradient-to-r from-dark to-[#7002DD] "
                   : ""
@@ -85,7 +86,7 @@ export default function Agenda() {
               Day 2
             </button>
             <button
-              className={`px-4 py-2 mx-2 rounded-3xl border-violetMedium border min-w-24 ${
+              className={`px-4 py-2 mx-2 rounded-3xl border-violetMedium border text-sm sm:text-lg ${
                 selectedDay === "day3"
                   ? "bg-gradient-to-r from-dark to-[#7002DD] "
                   : ""
@@ -96,11 +97,11 @@ export default function Agenda() {
             </button>
           </div>
 
-          <div className="shadow-md rounded-lg p-6 flex flex-col items-center z-20">
+          <div className="shadow-md rounded-lg p-6 flex flex-col items-start z-20 max-w-lg">
             {scheduleData[selectedDay].map((item, index) => (
-              <div key={index} className="flex max-w-md py-2 min-w-80">
+              <div key={index} className="flex  py-2 gap-3">
                 <span className="font-semibold">{item.time}</span>
-                <span>{item.event}</span>
+                <span className="text-sm sm:text-lg">{item.event}</span>
               </div>
             ))}
           </div>

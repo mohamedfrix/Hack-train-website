@@ -143,6 +143,7 @@ function MainReg() {
               <div
                 className="flex md:justify-start grow shrink md:min-w-[400px] md:pl-20 py-24
                                justify-center w-full px-11"
+                               
               >
                 <FormBox
                   title={item.title}

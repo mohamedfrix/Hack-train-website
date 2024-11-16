@@ -110,10 +110,11 @@ function MainReg() {
         ref={refList[refList.length - 1]}
       >
         <RegNavBar />
-        <div className="flex flex-row grow ">
+        <div className="flex flex-row grow   ">
           <FirstStep num={1} />
           <div
-            className="flex md:justify-start grow shrink min-w-[400px] md:pl-20  py-10
+
+            className="flex  md:justify-center grow shrink min-w-[400px] md:pl-20  py-10
                           justify-center w-full px-11"
           >
             <FormBox

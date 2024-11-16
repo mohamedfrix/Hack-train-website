@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import logo from "../../assets/Home/secai_white_with_text.svg";
 import MagicalButton from "./MagicalButton";
 
@@ -36,16 +36,16 @@ const Navbar = () => {
   return (
     <>
       <header
-        className={`header left-0 top-0 z-40 flex items-center min-h-24 fixed w-full transition-colors duration-300 ${
+        className={`header left-0 top-0 z-40 flex items-center min-h-24 fixed max-w-[100vw] w-full transition-colors duration-300 ${
           sticky
             ? "bg-black/10 backdrop-blur-sm text-white"
             : "bg-transparent text-white"
         }`}
       >
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <Link to="/" className="text-2xl md:text-4xl lg:text-5xl font-bold">
+          <RouterLink to="/" className="text-2xl md:text-4xl lg:text-5xl font-bold">
             <img src={logo} alt="" className="h-20" />
-          </Link>
+          </RouterLink>
 
           <div className="flex gap-2">
             <button
@@ -60,14 +60,14 @@ const Navbar = () => {
             <ul className="lg:flex lg:space-x-8 items-center">
               {menuData.map((menuItem) => (
                 <li key={menuItem.id}>
-                  <Link
-                    to={menuItem.path}
+                  <a
+                    href={menuItem.path}
                     className={`block py-2 px-4 ${
                       sticky ? "text-white" : "text-white"
                     }`}
                   >
                     {menuItem.title}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -96,8 +96,8 @@ const Navbar = () => {
                 <MagicalButton variant="white" />
                 {menuData.map((menuItem) => (
                   <li key={menuItem.id}>
-                    <Link
-                      to={menuItem.path}
+                    <a
+                      href={menuItem.path}
                       className={`block py-2 px-4 ${
                         location.pathname === menuItem.path
                           ? "font-semibold"
@@ -106,7 +106,7 @@ const Navbar = () => {
                       onClick={closeNavbar}
                     >
                       {menuItem.title}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>

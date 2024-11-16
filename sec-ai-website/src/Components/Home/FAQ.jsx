@@ -52,15 +52,15 @@ export default function FAQ() {
               className="flex justify-between cursor-pointer"
               onClick={() => toggleFAQ(index)}
             >
-              <h3 className="text-lg font-semibold">{faq.question}</h3>
-              <span className="text-lg">
+              <h3 className="text-sm sm:text-lg font-semibold">{faq.question}</h3>
+              <span className="text-sm sm:text-lg">
                 {activeIndex === index ? "-" : "+"}
               </span>
             </div>
 
             {/* Answer */}
             {activeIndex === index && (
-              <div className="mt-2 text-white">{faq.answer}</div>
+              <div className="mt-2 text-sm sm:text-md text-white">{faq.answer}</div>
             )}
           </div>
         ))}

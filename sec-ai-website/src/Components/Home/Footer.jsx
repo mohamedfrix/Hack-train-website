@@ -6,14 +6,14 @@ export default function Footer() {
     <div className=" bg-gradient-to-t from-mainLighter to-transparent pt-6"
     id="contact"
     >
-      <h1 className="text-center text-xl sm:text-2x md:text-3xl">Contact Us</h1>
+     <h1 className="text-center text-xl sm:text-2x md:text-3xl">Contact Us</h1>
       <h4 className="text-center text-md sm:text-lg md:text-xl pt-9">
         Follow us for new updates and colabs{" "}
       </h4>
       <div>
         <div className="flex justify-center gap-2 sm:gap-8 md:gap-12 pt-5">
           <a
-            className=" bg-dark py-2 px-4 rounded-2xl "
+            className=" bg-dark py-2 px-4 rounded-2xl cursor-pointer "
             href="https://www.linkedin.com/company/sec-ai/"
           >
             <svg

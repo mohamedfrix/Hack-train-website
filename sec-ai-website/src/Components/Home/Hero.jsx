@@ -6,7 +6,7 @@ import Binaries from "../../assets/Home/hero-binaries.svg";
 import MagicalButton from "./MagicalButton";
 
 export default function Hero() {
-  const targetDate = new Date(Date.UTC(2024, 10, 30, 0, 0, 0));
+  const targetDate = new Date("2024-12-19T00:15:00").getTime(); // Set your target date here
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {

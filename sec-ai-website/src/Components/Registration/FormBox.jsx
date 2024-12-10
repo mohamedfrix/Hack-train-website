@@ -7,10 +7,24 @@ function FormBox(props) {
   const [error, setError] = useState("");
   const input_ref = useRef(null);
 
+
+  const [ hasTeam , sethasTeam] = useState(false);
+
+
   function validateInput() {
-    if (input_ref.current.value.trim().toLowerCase() === "") {
-      return false;
+
+    if (props.type === "team") {
+      if (hasTeam) {
+        return (
+          props.state_var.team_name.trim() !== "" &&
+          props.state_var.team_members.every((member) => member.trim() !== "")
+        );
+      }
+      return true; 
     }
+    // if (input_ref.current.value.trim().toLowerCase() === "") {
+    //   return false;
+    // }
 
     switch (input_ref.current.name) {
       case "name":
@@ -22,7 +36,24 @@ function FormBox(props) {
       case "phone":
         const phoneRegex = /^\d{10}$/;
         return phoneRegex.test(input_ref.current.value);
+
       case "discord":
+        return true; 
+
+      case "linkedin":
+        return true; 
+
+      case "github":
+        return true; 
+
+      case "school":
+      case "year":
+      case "experience":        
+      case "skills":        
+      case "projects":
+      case "motivation":        
+         return input_ref.current.value.trim() !== "";
+      default:
         return true;
     }
   }
@@ -37,7 +68,7 @@ function FormBox(props) {
   }
   return (
     <div
-      className=" flex flex-col gap-10 justify-around shrink rounded-[30px] basis-3/5 p-14 border-white border 
+      className="flex flex-col gap-10 justify-center h-[80%] shrink rounded-[30px] basis-3/5 p-14 border-white border 
                      bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${background_image})` }}
     >
@@ -45,56 +76,91 @@ function FormBox(props) {
         {props.title} <span className="text-red-600">*</span>
       </p>
       {error && <p className="text-red-500 text-lg font-fira-code">{error}</p>}
-      <div className="grow flex flex-col  justify-start">
-        <input
-          className=" bg-transparent h-12 border-b-2
-                      focus:outline-none
-                      text-xl font-fira-code"
-          type="text"
-          name={props.type}
-          ref={input_ref}
-          value={(props?.state_var)[props.type] ?? ""}
-          onChange={(e) => {
-            props.update_state({
-              ...props.state_var,
-              [input_ref.current.name]: e.target.value,
-            });
-          }}
-        />
+      <div className="grow flex flex-col justify-start">
+        {props.type === "team" ? (
+          <>
+            <div className="flex items-center gap-4">
+              <input
+                type="checkbox"
+                id="hasTeam"
+                checked={hasTeam}
+                onChange={(e) => sethasTeam(e.target.checked)}
+              />
+              <label htmlFor="hasTeam" className="text-xl font-fira-code">
+                I have a team
+              </label>
+            </div>
+            {hasTeam && (
+              <div className="flex flex-col gap-4 mt-4">
+                <input
+                  className="bg-transparent h-12 border-b-2 focus:outline-none text-xl font-fira-code"
+                  type="text"
+                  name="team_name"
+                  placeholder="Team Name"
+                  value={props.state_var.team_name}
+                  onChange={(e) =>
+                    props.update_state({
+                      ...props.state_var,
+                      team_name: e.target.value,
+                    })
+                  }
+                />
+                {props.state_var.team_members.map((member, index) => (
+                  <input
+                    key={index}
+                    className="bg-transparent h-12 border-b-2 focus:outline-none text-xl font-fira-code"
+                    type="text"
+                    name={`team_member_${index + 1}`}
+                    placeholder={`Team Member ${index + 1}`}
+                    value={member}
+                    onChange={(e) => {
+                      const newTeamMembers = [...props.state_var.team_members];
+                      newTeamMembers[index] = e.target.value;
+                      props.update_state({
+                        ...props.state_var,
+                        team_members: newTeamMembers,
+                      });
+                    }}
+                  />
+                ))}
+              </div>
+            )}
+          </>
+        ) : (
+          <input
+            className="bg-transparent h-12 border-b-2 focus:outline-none text-xl font-fira-code"
+            type="text"
+            name={props.type}
+            ref={input_ref}
+            value={props.state_var[props.type] ?? ""}
+            onChange={(e) =>
+              props.update_state({
+                ...props.state_var,
+                [input_ref.current.name]: e.target.value,
+              })
+            }
+          />
+        )}
       </div>
-      <div
-        className="flex flex-row-reverse justify-between gap-3
-                      md:gap-5 "
-      >
+      <div className="flex flex-row-reverse justify-between ">
         <button
-          className="flex flex-r justify-around items-center h-10 w-32  rounded-[20px]  bg-mainLighter pl-3 custome-shadow 
-                       md:h-14 md:w-44"
+          className="flex flex-r justify-around items-center h-14 w-44 rounded-[20px]  bg-mainLighter pl-3 custome-shadow "
           onClick={handleClick}
         >
-          <p className="font-fira-code text-xl  md:text-2xl">
+          <p className="font-fira-code text-2xl">
             {props.last ? "Submit " : "Next"}
           </p>
-          <img className="w-5 h-5 md:w-8 md:h-8" src={arrow_back} alt="next" />
+          <img src={arrow_back} alt="next" />
         </button>
         {props.back && (
           <button
-            className="flex justify-around items-center h-10 w-32 rounded-[20px]  bg-transparent border-mainLighter border-2 pl-3  custome-shadow
-                        md:h-14 md:w-44"
+            className="flex justify-start items-center h-14 w-44 rounded-[20px]  bg-transparent border-mainLighter border-2 pl-3 gap-10 custome-shadow"
             onClick={() => {
               props.backButton(props.index);
             }}
           >
-            <img
-              className="w-5 h-5 md:w-8 md:h-8"
-              src={arrow_next}
-              alt="next"
-            />
-            <p
-              className="font-fira-code text-xl
-                          md:text-2xl"
-            >
-              Back
-            </p>
+            <img src={arrow_next} alt="next" />
+            <p className="font-fira-code text-2xl">Back</p>
           </button>
         )}
       </div>
@@ -103,3 +169,5 @@ function FormBox(props) {
 }
 
 export default FormBox;
+
+

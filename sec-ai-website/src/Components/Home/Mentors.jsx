@@ -7,6 +7,9 @@ import houda from "../../assets/Home/mentors-pics/houda.jpg";
 import lamine from "../../assets/Home/mentors-pics/lamine.jpg";
 import bilel from "../../assets/Home/mentors-pics/bilel.jpg";
 
+import aya from "../../assets/Home/mentors-pics/aya.png";
+import abdelhak from "../../assets/Home/mentors-pics/abdelhak.webp";
+
 
 const mentors = [
   {
@@ -53,10 +56,10 @@ const mentors = [
     ],
   },
   {
-    name: "aya",
-    photo: sara,
+    name: "aya benali khodja",
+    photo: aya,
     description: [
-      "",
+      "3rd year student at ENSIA,Challenge Author at MysteryBox24 and Hack&Train, CTF player, currently leading the cyber security department at SecAI , intern at ONM Algeria.",
     ],
   },
   {
@@ -71,9 +74,9 @@ const mentors = [
   },
   {
     name: "abdelhak",
-    photo: sara,
+    photo: abdelhak,
     description: [
-      "",
+      " - 4th year student at ENSIA ", " - lead at skillntell" ," - former intern at ASAL",
     ],
   },
 

@@ -144,7 +144,7 @@ function FormBox(props) {
       </div>
       <div className="flex flex-row-reverse justify-between ">
         <button
-          className="flex flex-r justify-around items-center h-14 w-44 rounded-[20px]  bg-mainLighter pl-3 custome-shadow "
+          className="flex flex-r justify-around items-center h-14 w-28 md:w-44 rounded-[20px]  bg-mainLighter pl-3 custome-shadow "
           onClick={handleClick}
         >
           <p className="font-fira-code text-2xl">
@@ -154,7 +154,7 @@ function FormBox(props) {
         </button>
         {props.back && (
           <button
-            className="flex justify-start items-center h-14 w-44 rounded-[20px]  bg-transparent border-mainLighter border-2 pl-3 gap-10 custome-shadow"
+            className="flex justify-around items-center h-14  w-28 md:w-44 rounded-[20px]  bg-transparent border-mainLighter border-2 pl-3  custome-shadow"
             onClick={() => {
               props.backButton(props.index);
             }}

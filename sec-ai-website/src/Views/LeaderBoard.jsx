@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import SwitchTabsButton from '../Components/Leaderboard/Common/SwitchTabsButton'
+import SwitchTabsButton from '../Components/Leaderboard/Common/SwitchTabsButton';
 import LeaderBoardTab from '../Components/Leaderboard/Common/LeaderboardTab';
 import CTFsTab from '../Components/CTFs/CTFsTab';
 import BlobBackground from '../Components/BlobsBackground';

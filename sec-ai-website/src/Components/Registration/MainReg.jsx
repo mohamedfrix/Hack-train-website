@@ -63,7 +63,7 @@ function MainReg() {
     console.log("final form", formData);
 
     const googleScriptURL =
-     "https://script.google.com/macros/s/AKfycbyi5qmdY05g-K0jy072oNGUs0TswXtbOEWh48lMjpUsECRmyWcXrbKOn6GSaSbAC6cI/exec";
+     "https://script.google.com/macros/s/AKfycbx9y8pjiOvbE_HyrsafXdMBTE4VHyYnJnU5pWg6nT2VMr74QUXC5KCYv2WU_Nhy_P1w/exec";
 
       const jsonData = {
         name: formData.name,
@@ -173,8 +173,8 @@ function MainReg() {
               </div>
              
               <div
-                className="flex md:justify-center grow shrink md:min-w-[400px] md:pl-20 py-24
-                               justify-center w-full px-11"
+                className="flex md:justify-center md:items-center grow shrink md:min-w-[400px] md:pl-20 py-24
+                               justify-center w-full px-5 md:px-11"
                                
               >
                 <FormBox

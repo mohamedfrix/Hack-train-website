@@ -68,7 +68,7 @@ function FormBox(props) {
   }
   return (
     <div
-      className="flex flex-col gap-10 justify-center h-[80%] shrink rounded-[30px] basis-3/5 p-14 border-white border 
+      className="flex flex-col gap-10 justify-center md:h-[80%] flex-1 md:flex-none shrink rounded-[30px]  md:basis-3/5 p-9 md:p-14 border-white border 
                      bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${background_image})` }}
     >
@@ -92,6 +92,9 @@ function FormBox(props) {
             </div>
             {hasTeam && (
               <div className="flex flex-col gap-4 mt-4">
+                <label className=" text-base opacity-80 underline font-fira-code">
+                write members' names 'firstName lastname'
+              </label>
                 <input
                   className="bg-transparent h-12 border-b-2 focus:outline-none text-xl font-fira-code"
                   type="text"

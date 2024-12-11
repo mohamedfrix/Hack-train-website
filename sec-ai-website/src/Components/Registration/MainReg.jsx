@@ -75,6 +75,7 @@ function MainReg() {
         school: formData.school,
         year: formData.year,
         experience: formData.experience,
+        skills : formData.skills,
         projects: formData.projects,
         motivation: formData.motivation,
         team_name: formData.team_name,

@@ -63,7 +63,7 @@ function MainReg() {
     console.log("final form", formData);
 
     const googleScriptURL =
-     "https://script.google.com/macros/s/AKfycbyi5qmdY05g-K0jy072oNGUs0TswXtbOEWh48lMjpUsECRmyWcXrbKOn6GSaSbAC6cI/exec";
+     "https://script.google.com/macros/s/AKfycbzYh_M0cvw9pAWrTEvbWaHFpMrxSb_rIXdCEcTURbYaVq0BUOFbNA_KTp4NGsGb77kZ/exec";
 
       const jsonData = {
         name: formData.name,

@@ -63,7 +63,7 @@ function MainReg() {
     console.log("final form", formData);
 
     const googleScriptURL =
-     "https://script.google.com/macros/s/AKfycbxa6KIvy3ttuv_BdzLLV4Bnu0NzIEaAkZ_mbRpkuYq52BYYqPhp1qq8JQreMp18kn8V/exec";
+     "https://script.google.com/macros/s/AKfycbyi5qmdY05g-K0jy072oNGUs0TswXtbOEWh48lMjpUsECRmyWcXrbKOn6GSaSbAC6cI/exec";
 
       const jsonData = {
         name: formData.name,
@@ -75,6 +75,7 @@ function MainReg() {
         school: formData.school,
         year: formData.year,
         experience: formData.experience,
+        skills : formData.skills,
         projects: formData.projects,
         motivation: formData.motivation,
         team_name: formData.team_name,

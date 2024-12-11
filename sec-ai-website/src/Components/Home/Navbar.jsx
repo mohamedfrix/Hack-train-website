@@ -5,7 +5,7 @@ import MagicalButton from "./MagicalButton";
 
 const menuData = [
   { id: 1, title: "About", path: "#about" },
-  { id: 3, title: "Speakers", path: "#speakers" },
+  { id: 3, title: "Mentors", path: "#mentors" },
   { id: 2, title: "Agenda", path: "#agenda" },
   { id: 5, title: "FAQs", path: "#faqs" },
   { id: 4, title: "Contact", path: "#contact" },

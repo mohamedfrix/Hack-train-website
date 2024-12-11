@@ -5,6 +5,7 @@ import idriss from "../../assets/Home/mentors-pics1/idriss.jpg";
 import sara from "../../assets/Home/mentors-pics1/sara.png";
 import houda from "../../assets/Home/mentors-pics/houda.jpg";
 import lamine from "../../assets/Home/mentors-pics/lamine.jpg";
+import meriem from "../../assets/Home/mentors-pics/meriem.jpg";
 import bilel from "../../assets/Home/mentors-pics/bilel.jpg";
 
 import aya from "../../assets/Home/mentors-pics/aya.png";
@@ -34,8 +35,8 @@ const mentors = [
     ],
   },
   {
-    name: "Ouari Meriem",
-    photo: eventLogo,
+    name: "Meriem Ouari",
+    photo: meriem,
     description: [
       "4th-year student at the Higher School of Artificial Intelligence and an AI Manager at SECAI Club, with a strong focus on interdisciplinary AI applications.",
 
@@ -52,14 +53,14 @@ const mentors = [
     name: "Sarra Arab",
     photo: sara,
     description: [
-      "4th year student of AI and data science ENSIA. AI manager at SECAI students club. AI & ML enthusiast with experience in NLP, generative AI, and reinforcement learning.",
+      "4th-year student at the Higher School of Artificial Intelligence, with a strong focus on interdisciplinary AI applications.",
     ],
   },
   {
-    name: "aya benali khodja",
+    name: "Aya Benali Khodja",
     photo: aya,
     description: [
-      "3rd year student at ENSIA,Challenge Author at MysteryBox24 and Hack&Train, CTF player, currently leading the cyber security department at SecAI , intern at ONM Algeria.",
+      "3rd year student at ENSIA,Challenge Author at MysteryBox24 and Hack&Train, currently leading the cyber security department at SecAI , intern at ONM Algeria.",
     ],
   },
   {
@@ -68,12 +69,13 @@ const mentors = [
     description: [
       "- 3rd year ENSIA student",
       "- cyber security team leader at SecAI student club", 
-      "- cyber security and AI enthusiast" 
+      "- cyber security and AI enthusiast" ,
+      "- Hack&Train event owner" ,
 
     ],
   },
   {
-    name: "abdelhak",
+    name: "Abdelhak Chellal",
     photo: abdelhak,
     description: [
       " - 4th year student at ENSIA ", " - lead at skillntell" ," - former intern at ASAL",
@@ -85,7 +87,7 @@ const mentors = [
 
 export default function MentorCarousel({
   autoSlide = true,
-  autoSlideInterval = 4000,
+  autoSlideInterval = 8000,
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -115,7 +117,7 @@ export default function MentorCarousel({
   return (
     <div
       className="relative w-full   grid place-items-center bg-mainLighter h-auto "
-      id="speakers"
+      id="mentors"
     >
       <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center w-full bg-dark py-9 font-bold">
         Mentors

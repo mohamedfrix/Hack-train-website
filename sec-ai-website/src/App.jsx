@@ -16,7 +16,7 @@ function App() {
         <Route  path="/" element={<Home />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/leaderb" element={<LeaderBoard />} />
-        <Route path="/submission_done" element={<SubmissionDone />} />
+        {/* <Route path="/submission_done" element={<SubmissionDone />} /> */}
       </Routes>
     </Router>
     </div>

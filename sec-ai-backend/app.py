@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from leaderboard import LeaderBoard
 import json
 
@@ -11,7 +11,8 @@ def home():
 @app.route('/api/leaderboard', methods=['GET'])
 def leaderboard():
     leaderboard = LeaderBoard()
-    return jsonify(leaderboard.get_kaggle_leaderboard())
+    competition_name = request.args['competition_name']
+    return jsonify(leaderboard.get_kaggle_leaderboard(competition_name=competition_name))
 
 
 if __name__ == '__main__':

@@ -1,22 +1,26 @@
+from operator import truediv
+
 import kaggle
 from kaggle.api.kaggle_api_extended import KaggleApi
 import json
 import datetime
-
-import gspread
-from google.oauth2.service_account import Credentials
+from supabase import create_client, Client
+from dotenv import load_dotenv
+import os
 
 class LeaderBoard:
     def __init__(self):
-        with open('competition.config.json') as config_file:
-            config = json.load(config_file)
-        self.competition_name = config.get('competition_name')
-        self.sheet_id = config.get('members_sheet_id')
+        load_dotenv()
+
+        url = os.getenv('SUPABASE_URL')
+        key = os.getenv('SUPABASE_ANON_KEY')
+        self.supabase: Client = create_client(url, key)
+
         self.api = KaggleApi()
         self.api.authenticate()
 
-    def get_kaggle_leaderboard(self):
-        leaderboard = kaggle.api.competition_leaderboard_view(self.competition_name)
+    def get_kaggle_leaderboard(self, competition_name):
+        leaderboard = kaggle.api.competition_leaderboard_view(competition_name)
         my_data = []
         members = self.get_competition_members()
 
@@ -30,6 +34,7 @@ class LeaderBoard:
                     extended_row['submissionDate'] = extended_row['submissionDate'].strftime('%Y-%m-%d %H:%M:%S')
 
                 extended_row['teamMembers'] = members[extended_row['teamName']]
+                members.pop(my_row['teamName'])
                 days = time_elapsed.days
                 seconds = time_elapsed.seconds
                 hours = seconds // 3600
@@ -43,32 +48,56 @@ class LeaderBoard:
                     extended_row['last'] = f"{minutes}m {seconds}s"
                 my_data.append(extended_row)
 
+        if len(members) > 0:
+            for team_name, members in members.items():
+                row = {'teamNameNullable': team_name, 'scoreNullable': 0, 'teamId': -1, 'teamName': team_name,
+                       'hasTeamName': True, 'submissionDate': -1, 'score': 0, 'hasScore': False, 'last': -1,
+                       'teamMembers': members}
+                my_data.append(row)
         return my_data
 
     def get_competition_members(self):
-        scopes = ['https://www.googleapis.com/auth/spreadsheets']
-        creds = Credentials.from_service_account_file("sheet.config.json", scopes=scopes)
-        client = gspread.authorize(creds)
-
-        sheet = client.open_by_key(self.sheet_id).sheet1
-
+        
+        response = self.supabase.table('users').select('*').execute()
         teams = {}
-        for fn, ln, email, tn in sheet.get_all_values()[1:]:
-            if tn not in teams:
-                teams[tn] = []
+        if response.data:
+            for user in response.data:
+                team_name = user.get('team_name')  # Replace with the actual column name for team name
+                if team_name not in teams:
+                    teams[team_name] = []
                 team_member = {
-                    'first_name': fn,
-                    'last_name': ln,
-                    'email': email,
+                    'first_name': user.get('first_name'),  # Replace with column name for first name
+                    'last_name': user.get('last_name'),    # Replace with column name for last name
+                    'email': user.get('email'),            # Replace with column name for email
                 }
-                teams[tn].append(team_member)
-            else:
-                team_member = {
-                    'first_name': fn,
-                    'last_name': ln,
-                    'email': email,
-                }
-                teams[tn].append(team_member)
+                teams[team_name].append(team_member)
+
         return teams
+        
+        # scopes = ['https://www.googleapis.com/auth/spreadsheets']
+        # creds = Credentials.from_service_account_file("sheet.config.json", scopes=scopes)
+        # client = gspread.authorize(creds)
+        # 
+        # sheet = client.open_by_key(self.sheet_id).sheet1
+        # 
+        # teams = {}
+        # for fn, ln, email, tn in sheet.get_all_values()[1:]:
+        #     if tn not in teams:
+        #         teams[tn] = []
+        #         team_member = {
+        #             'first_name': fn,
+        #             'last_name': ln,
+        #             'email': email,
+        #         }
+        #         teams[tn].append(team_member)
+        #     else:
+        #         team_member = {
+        #             'first_name': fn,
+        #             'last_name': ln,
+        #             'email': email,
+        #         }
+        #         teams[tn].append(team_member)
+        # return teams
+
 
 

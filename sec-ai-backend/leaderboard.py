@@ -16,6 +16,27 @@ class LeaderBoard:
         key = os.getenv('SUPABASE_ANON_KEY')
         self.supabase: Client = create_client(url, key)
 
+        #for deployment ####################################
+
+        kaggle_username = os.getenv('KAGGLE_USERNAME')
+        kaggle_key = os.getenv('KAGGLE_KEY')
+
+        if not kaggle_username or not kaggle_key:
+            raise EnvironmentError('KAGGLE_USERNAME and KAGGLE_KEY must be set in the environment variables.')
+
+        kaggle_config = {
+            'username': kaggle_username,
+            'key': kaggle_key
+        }
+
+        with open('kaggle.json', 'w') as f:
+            json.dump(kaggle_config, f)
+
+        os.environ['KAGGLE_CONFIG_DIR'] = os.getcwd()
+
+        ####################################################
+
+
         self.api = KaggleApi()
         self.api.authenticate()
 

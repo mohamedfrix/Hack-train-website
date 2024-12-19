@@ -1,0 +1,4 @@
+kaggle==1.5.12
+Flask==2.0.2
+python-dotenv==0.19.2
+supabase==0.8.1

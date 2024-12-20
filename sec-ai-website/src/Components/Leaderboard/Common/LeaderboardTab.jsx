@@ -82,7 +82,7 @@ function LeaderBoardTab(props) {
       try {
         // let kaggle_api_url = `hachtrainbackend-production.up.railway.app/api/leaderboard?competition_name=${selectedChallenge.name}`;
         // let kaggle_api_url = 'https://jsonplaceholder.typicode.com/todos/1'
-        let kaggle_api_url = `http://hachtrainbackend.onrender.com/api/leaderboard?competition_name=palm-tree-detection`
+        let kaggle_api_url = `https://hachtrainbackend.onrender.com/api/leaderboard?competition_name=palm-tree-detection`
         console.log(`url: ${kaggle_api_url}`)
         const response = await fetch(kaggle_api_url); // Replace with the actual API endpoint
         if (!response.ok) {

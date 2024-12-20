@@ -52,6 +52,7 @@ function LeaderBoardTab(props) {
   const [challenges, setChallenges] = useState([]);
   const [selectedChallenge, setSelectedChallenge] = useState(null);
   const [leaderboardData, setLeaderboardData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchCompetitions = async () => {
@@ -82,6 +83,7 @@ function LeaderBoardTab(props) {
       try {
         // let kaggle_api_url = `hachtrainbackend-production.up.railway.app/api/leaderboard?competition_name=${selectedChallenge.name}`;
         // let kaggle_api_url = 'https://jsonplaceholder.typicode.com/todos/1'
+        setLoading(true);
         let kaggle_api_url = `https://hachtrainbackend.onrender.com/api/leaderboard?competition_name=${selectedChallenge.name}`;
         console.log(`url: ${kaggle_api_url}`)
         const response = await fetch(kaggle_api_url); // Replace with the actual API endpoint
@@ -99,6 +101,7 @@ function LeaderBoardTab(props) {
           })
         }
         setLeaderboardData(() => data_to_pass);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -111,35 +114,49 @@ function LeaderBoardTab(props) {
   
   
   return (
-    
-    <div className={"flex h-lvh flex-col w-full items-center mt-10 transition-all ease-in-out opacity-0 " + (props.intransition ? "opacity-0" : "opacity-100")}>
-        {/* This shows total, challenge1, .... buttons */ }
-      {/*<div className={'w-[100px] h-[100px] bg-amber-300'} onClick={() => {console.log(selectedChallenge)}}></div>*/}
-      {/*TODO: remove the above container */}
-      <div className="flex no-scrollbar flex-row items-start gap-8 font-fira-code overflow-x-scroll whitespace-nowrap md:w-full py-2 px-2 scroll-m-20 scrollbar-hidden">
-        {challenges.map((button, index) => (
-          <LeaderboardChallengeSelectionButton
-            key={index}
-            id={index}
-            buttonInfo={button}
-            active={activeChallenge === index}
-            setActive={setActiveChallenge}
-            onClick = {() => {
-              setSelectedChallenge(challenges[index]);
-            }}
-          />
-        ))}
-      </div>
+
+      <div
+          className={"flex h-lvh flex-col w-full items-center mt-10 transition-all ease-in-out opacity-0 " + (props.intransition ? "opacity-0" : "opacity-100")}>
+        {/* This shows total, challenge1, .... buttons */}
+        {/*<div className={'w-[100px] h-[100px] bg-amber-300'} onClick={() => {console.log(selectedChallenge)}}></div>*/}
+        {/*TODO: remove the above container */}
+        <div
+            className="flex no-scrollbar flex-row items-start gap-8 font-fira-code overflow-x-scroll whitespace-nowrap md:w-full py-2 px-2 scroll-m-20 scrollbar-hidden">
+          {challenges.map((button, index) => (
+              <LeaderboardChallengeSelectionButton
+                  key={index}
+                  id={index}
+                  buttonInfo={button}
+                  active={activeChallenge === index}
+                  setActive={setActiveChallenge}
+                  onClick={() => {
+                    setSelectedChallenge(challenges[index]);
+                  }}
+              />
+          ))}
+        </div>
         {/* This shows Public , Private selection  */}
-      <div className="flex flex-row md:justify-start justify-center  gap-14 w-5/6 md:w-11/12 mt-10">
-        {leaderboards.map((leaderboard, index) => (
-          <span id={index} className={` cursor-pointer  font-fira-code text-center text-2xl md:text-[2rem] ${(activeLeaderboard == index )&& "text-mainLighter font-semibold"}`} onClick={()=>setActiveLeaderboard(index)}>{leaderboard.name}</span>
-        ))}
-        
+        <div className="flex flex-row md:justify-start justify-center  gap-14 w-5/6 md:w-11/12 mt-10">
+          {leaderboards.map((leaderboard, index) => (
+              <span id={index}
+                    className={` cursor-pointer  font-fira-code text-center text-2xl md:text-[2rem] ${(activeLeaderboard == index) && "text-mainLighter font-semibold"}`}
+                    onClick={() => setActiveLeaderboard(index)}>{leaderboard.name}</span>
+          ))}
+
+        </div>
+
+        <div>
+          {/* This shows Public leaderboard content or private leaderboard content */}
+          {
+            !loading ?
+                (!activeLeaderboard ? <PublicLeaderboard data={leaderboardData}/> : <PrivateLeaderboard/>) :
+                <div className={`h-[500px] flex items-center`}>
+                  <p className={`font-fira-code text-2xl font-semibold `}>Loading...</p>
+                </div>
+          }
+        </div>
+
       </div>
-      {/* This shows Public leaderboard content or private leaderboard content  */}
-      {!activeLeaderboard?  <PublicLeaderboard data={leaderboardData}/> : <PrivateLeaderboard/>}
-    </div>
   );
 }
 

@@ -8,10 +8,8 @@ function LeaderboardTable({data}){
             <tr>
               <th className="px-6 py-3  text-white border-b">#</th>
               <th className="px-2 md:w-[15rem] py-3 text-left text-white border-b">Team</th>
-              <th className="px-2 py-3  text-white border-b">Members</th>
               <th className="px-2 py-3  text-white border-b">Score</th>
-              <th className="px-2 py-3  text-white border-b">Entries</th>
-              <th className="px-2 py-3  text-white border-b">Last</th>
+              <th className="px-2 py-3  text-white border-b">Last Submission</th>
             </tr>
           </thead>
           <tbody>
@@ -19,11 +17,9 @@ function LeaderboardTable({data}){
             {data.map((row, index) => (
               <tr  key={index}>
                 <td className="py-3 h-[5rem] text-center text-white border-b">{index+1}</td>
-                <td className="px-2 py-3 text-white border-b">{row.Team}</td>
-                <td className="py-2 text-center text-white border-b">Pictures go here</td>
-                <td className="px-2 py-3 text-center text-white border-b">{row.Score}</td>
-                <td className="px-2 py-3 text-center text-white border-b">{row.Entries}</td>
-                <td className="px-2 py-3 text-center text-white border-b">{row.Last}</td>
+                <td className="px-2 py-3 text-white border-b">{row['teamName']}</td>
+                <td className="px-2 py-3 text-center text-white border-b">{row['score']}</td>
+                <td className="px-2 py-3 text-center text-white border-b">{row['last submission']}</td>
               </tr>
             ))}
           </tbody>

@@ -51,7 +51,7 @@ function LeaderBoardTab(props) {
   const [activeLeaderboard, setActiveLeaderboard] = useState(0); // 0 for public 1 for private
   const [challenges, setChallenges] = useState([]);
   const [selectedChallenge, setSelectedChallenge] = useState(null);
-  const [leaderboardData, setLeaderboardData] = useState({});
+  const [leaderboardData, setLeaderboardData] = useState([]);
 
   useEffect(() => {
     const fetchCompetitions = async () => {
@@ -80,14 +80,16 @@ function LeaderBoardTab(props) {
   useEffect(() => {
     const fetchDataFromAPI = async () => {
       try {
-        let kaggle_api_url = `https://hachtrainbackend-production.up.railway.app/api/leaderboard?competition_name=${selectedChallenge.name}`;
-        // let kaggle_api_url = 'https://hachtrainbackend-production.up.railway.app/api/leaderboard?competition_name=palm-tree-detection'
+        // let kaggle_api_url = `hachtrainbackend-production.up.railway.app/api/leaderboard?competition_name=${selectedChallenge.name}`;
+        // let kaggle_api_url = 'https://jsonplaceholder.typicode.com/todos/1'
+        let kaggle_api_url = `/api/api/leaderboard?competition_name=palm-tree-detection`
         console.log(`url: ${kaggle_api_url}`)
         const response = await fetch(kaggle_api_url); // Replace with the actual API endpoint
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
+        console.log(data)
         let data_to_pass = [];
         for (let i = 0; i < data.length; i++) {
           data_to_pass.push({

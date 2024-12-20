@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import {Link as RouterLink, useNavigate} from "react-router-dom";
 import logo from "../../assets/Home/secai_white_with_text.svg";
 import MagicalButton from "./MagicalButton";
 
@@ -14,6 +14,7 @@ const menuData = [
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
+  const navigator = useNavigate();
 
   useEffect(() => {
     const handleStickyNavbar = () => {
@@ -73,8 +74,15 @@ const Navbar = () => {
             </ul>
           </nav>
 
-          <div className="hidden md:block">
-            <MagicalButton variant="white" />
+          {/*<div className="hidden md:block">*/}
+          {/*  <MagicalButton variant="white" />*/}
+          {/*</div>*/}
+          <div className={`cursor-pointer`}>
+            <p className={`text-[22px] font-bold`}
+               onClick={() => {
+                 navigator("/leaderboard");
+               }}
+            >Leader Board</p>
           </div>
         </div>
       </header>

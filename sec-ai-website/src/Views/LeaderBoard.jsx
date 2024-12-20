@@ -6,7 +6,7 @@ import BlobBackground from '../Components/BlobsBackground';
 
 
 function LeaderBoard() {
-  const [ActiveTab , SetActiveTab] = useState(0); // 0 for CTF , 1 for Leaderboard
+  const [ActiveTab , SetActiveTab] = useState(1); // 0 for CTF , 1 for Leaderboard
   const [inTransition,  setInTransition] = useState(false);
   const HandleChange = (v)=>{
     setInTransition(true)

@@ -6,9 +6,9 @@ function SwitchTabsButton({ActiveTabState, ActiveTabControl}) {
         <div className={" cursor-pointer px-4 py-2  flex md:w-44 justify-center "+((ActiveTabState == 0) && " text-mainLighter")} onClick={()=>ActiveTabControl(0)}>
             CTFs
         </div>
-        <div className={" cursor-pointer px-4 py-2 md:w-44 flex justify-center  "+((ActiveTabState == 1) && " text-mainLighter")} onClick={()=>ActiveTabControl(1)}>
-            Leaderboard
-        </div>
+        {/*<div className={" cursor-pointer px-4 py-2 md:w-44 flex justify-center  "+((ActiveTabState == 1) && " text-mainLighter")} onClick={()=>ActiveTabControl(1)}>*/}
+        {/*    Leaderboard*/}
+        {/*</div>*/}
     </div>
   );
 }

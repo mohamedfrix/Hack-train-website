@@ -19,7 +19,7 @@ function LeaderBoard() {
   }
   return (
     <><BlobBackground /><div className=" fixed h-lvh md:px-20 pb-20 w-lvw overflow-hidden box-border z-10 pt-5 flex flex-col items-center">
-      <SwitchTabsButton ActiveTabState={ActiveTab} ActiveTabControl={HandleChange} />
+      {/*<SwitchTabsButton ActiveTabState={ActiveTab} ActiveTabControl={HandleChange} />*/}
       {ActiveTab === 0 ? <CTFsTab intransition={inTransition}/> : <LeaderBoardTab intransition={inTransition} />}
 
 
